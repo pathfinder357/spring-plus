@@ -1,5 +1,6 @@
 package org.example.expert.config;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.example.expert.domain.auth.exception.AuthException;
 import org.example.expert.domain.common.exception.InvalidRequestException;
 import org.example.expert.domain.common.exception.ServerException;
@@ -17,6 +18,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidRequestException.class)
     public ResponseEntity<Map<String, Object>> invalidRequestExceptionException(InvalidRequestException ex) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
+        return getErrorResponse(status, ex.getMessage());
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> entityNotFoundException(EntityNotFoundException ex) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
         return getErrorResponse(status, ex.getMessage());
     }
 
