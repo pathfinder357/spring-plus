@@ -1,4 +1,4 @@
-# 📌 일정 검색 및 매니저 등록 로그 기능
+# 📌 spring-plus
 
 ## 🚀 1. QueryDSL을 활용한 일정 검색 API
 
